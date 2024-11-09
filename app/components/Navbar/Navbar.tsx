@@ -17,9 +17,9 @@ const Navbar: React.FC = () => {
 
       
       <nav className="hidden lg:flex space-x-4 border-2 border-purple-500 rounded-full bg-[#d2c6b7] bg-opacity-80 px-6 py-2">
-        <a href="#" className="text-blue-900 font-bold hover:text-blue-600">HOME</a>
-        <a href="#" className="text-blue-900 font-bold hover:text-blue-600">ABOUT</a>
-        <a href="#" className="text-blue-900 font-bold hover:text-blue-600">CONTACT</a>
+        <a href="/home" className="text-blue-900 font-bold hover:text-blue-600">HOME</a>
+        <a href="/about" className="text-blue-900 font-bold hover:text-blue-600">ABOUT</a>
+        <a href="/contact" className="text-blue-900 font-bold hover:text-blue-600">CONTACT</a>
       </nav>
 
       {/* Hamburger Icon for Mobile */}

@@ -1,7 +1,7 @@
 // AboutSection.tsx
 "use client";
 import Background from "./background";
-import { useState } from "react";
+
 
 const AboutSection: React.FC = () => {
   

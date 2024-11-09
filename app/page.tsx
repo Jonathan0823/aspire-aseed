@@ -1,8 +1,11 @@
+import AboutSection from "./pages/AboutSection";
+import Navbar from "./pages/Navbar";
 
 export default function Home() {
   return (
     <div>
-      Home
+      <Navbar />
+      <AboutSection />
     </div>
   );
 }

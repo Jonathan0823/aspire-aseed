@@ -19,4 +19,46 @@ model User {
   name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  AspirasiTerbuka AspirasiTerbuka[]
+  AspirasiTertutup AspirasiTertutup[]
+  SexualHarassment SexualHarassment[]
+}
+
+model AspirasiTerbuka{
+  id            String   @id @default(cuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  nama          String
+  kelas         String
+  angkatan      String
+  keluhan       String
+  buktiKeluhan  String
+  type          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model AspirasiTertutup{
+  id            String   @id @default(cuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  angkatan      String
+  keluhan       String
+  buktiKeluhan  String
+  type          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model SexualHarassment{
+  id            String   @id @default(cuid())
+  user          User     @relation(fields: [userId], references: [id])
+  userId        String
+  AlurKejadian  String
+  nama          String
+  ciriPelaku    String
+  buktiKeluhan  String
+  kontak        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

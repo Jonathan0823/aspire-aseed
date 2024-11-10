@@ -33,21 +33,25 @@ const Dropdown = () => {
             href="/"
             className="text-blue-900 font-bold hover:text-blue-600"
           >
-            HOME
+            <div>HOME</div>
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem><Link
-          href="/about"
-          className="text-blue-900 font-bold hover:text-blue-600"
-        >
-          ABOUT
-        </Link></DropdownMenuItem>
-        <DropdownMenuItem><Link
-          href="/contact"
-          className="text-blue-900 font-bold hover:text-blue-600"
-        >
-          CONTACT
-        </Link></DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
+            href="/about"
+            className="text-blue-900 font-bold hover:text-blue-600"
+          >
+            <div>ABOUT</div>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
+            href="/contact"
+            className="text-blue-900 font-bold hover:text-blue-600"
+          >
+            <div>CONTACT</div>
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

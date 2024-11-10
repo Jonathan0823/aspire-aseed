@@ -1,5 +1,3 @@
-// AboutSection.tsx
-"use client";
 import Background from "@/app/components/background";
 
 const AboutSection: React.FC = () => {

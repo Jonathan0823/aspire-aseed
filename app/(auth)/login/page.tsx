@@ -4,6 +4,7 @@ import { registerUser } from "@/lib/action";
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -14,11 +15,15 @@ const Page = () => {
     console.log(email, password);
   };
   const handleRegister = async () => {
-    console.log(email, password);
     try {
       await registerUser(email, password);
-    } catch (err) {
-      console.log(err);
+      toast.success('User registered successfully');
+    }  catch (err) {
+      if (err instanceof Error) {
+        toast.error(err.message);
+      } else {
+        toast.error('An unknown error occurred');
+      }
     }
     setEmail('');
     setPassword('');
@@ -27,6 +32,7 @@ const Page = () => {
   return (
     <div className="flex flex-col items-center justify-center w-screen md:pt-16 min-h-screen bg-cover bg-center relative">
       <Logo />
+      <Toaster />
       <div className=" text-white text-xl space-y-2 font-bold md:mt-5 mt-20 md:max-w-lg max-w-sm">
         <div className="flex gap-2 bg-[#161f77] p-4 rounded-full px-5 border-2 border-orange-400  justify-between w-full">
           <p className="w-24">Email</p>

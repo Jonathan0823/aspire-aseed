@@ -5,17 +5,11 @@ import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { data: session } = useSession();
-  if (session) {
-    redirect("/");
-  }
 
   const handleLogin = async () => {
     if (!email || !password) {

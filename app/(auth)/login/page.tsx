@@ -5,24 +5,30 @@ import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const { data: session } = useSession();
+  if (session) {
+    redirect("/");
+  }
 
   const handleLogin = async () => {
     if (!email || !password) {
       toast.error("Email and password are required");
       return;
     }
-    try{
+    try {
       await loginUser(email, password);
       toast.success("User logged in successfully");
     } catch (err) {
       if (err instanceof Error) {
-        if (err.message.includes('NEXT_REDIRECT')) {
-          toast.success('User logged in successfully');
+        if (err.message.includes("NEXT_REDIRECT")) {
+          toast.success("User logged in successfully");
         } else {
           toast.error(err.message);
         }

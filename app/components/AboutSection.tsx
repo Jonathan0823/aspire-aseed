@@ -10,8 +10,8 @@ const AboutSection: React.FC = () => {
         <h2 className="bg-[#040180] border border-white text-2xl text-white rounded-full py-2 px-20 inline-block font-bold mb-4">
           ABOUT
         </h2>
-      <div className="bg-[#d2c6b7] bg-opacity-90 rounded-lg p-8 max-w-md text-center">
-        <p className="text-[#040180] text-bold text-md leading-relaxed">
+      <div className="bg-[#d2c6b7] bg-opacity-90 rounded-lg p-8 md:max-w-xl mx-5 text-center">
+        <p className="text-[#040180] font-semibold text-xl leading-relaxed">
           AspireAseed is a website managed by the Association of Students of
           English Education Department. This website accommodates every student
           who has opinions, complaints, and input directed at the campus. It

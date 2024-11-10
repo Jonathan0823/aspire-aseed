@@ -1,7 +1,6 @@
 // pages/index.tsx
 import Image from "next/image";
-import AboutSection from "./pages/AboutSection";
-import Background from "./pages/background";
+import Background from "./components/background";
 
 export default function Home() {
   return (

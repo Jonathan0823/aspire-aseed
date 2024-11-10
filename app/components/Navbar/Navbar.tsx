@@ -1,6 +1,7 @@
 // Navbar.tsx
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -17,9 +18,9 @@ const Navbar: React.FC = () => {
 
       
       <nav className="hidden lg:flex space-x-4 border-2 border-purple-500 rounded-full bg-[#d2c6b7] bg-opacity-80 px-6 py-2">
-        <a href="/home" className="text-blue-900 font-bold hover:text-blue-600">HOME</a>
-        <a href="/about" className="text-blue-900 font-bold hover:text-blue-600">ABOUT</a>
-        <a href="/contact" className="text-blue-900 font-bold hover:text-blue-600">CONTACT</a>
+        <Link href="/" className="text-blue-900 font-bold hover:text-blue-600">HOME</Link>
+        <Link href="/about" className="text-blue-900 font-bold hover:text-blue-600">ABOUT</Link>
+        <Link href="/contact" className="text-blue-900 font-bold hover:text-blue-600">CONTACT</Link>
       </nav>
 
       {/* Hamburger Icon for Mobile */}
@@ -46,9 +47,9 @@ const Navbar: React.FC = () => {
       {/* Dropdown Menu for Mobile */}
       {menuOpen && (
         <div className="absolute top-16 right-4 bg-[#d2c6b7] rounded-lg shadow-lg p-4 flex flex-col space-y-2 lg:hidden z-20">
-          <a href="/home" className="text-gray-800 font-semibold hover:text-blue-600">HOME</a>
-          <a href="/about" className="text-gray-800 font-semibold hover:text-blue-600">ABOUT</a>
-          <a href="/contact" className="text-gray-800 font-semibold hover:text-blue-600">CONTACT</a>
+          <Link href="/" className="text-gray-800 font-semibold hover:text-blue-600">HOME</Link>
+          <Link href="/about" className="text-gray-800 font-semibold hover:text-blue-600">ABOUT</Link>
+          <Link href="/contact" className="text-gray-800 font-semibold hover:text-blue-600">CONTACT</Link>
         </div>
       )}
     </header>

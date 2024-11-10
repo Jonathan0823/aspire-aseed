@@ -5,7 +5,7 @@ import Background from "./pages/background";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-screen pt-10 min-h-screen bg-cover bg-center relative">
+    <div className="flex flex-col items-center justify-center w-screen md:pt-16 min-h-screen bg-cover bg-center relative">
       <Background />
       <div className="flex flex-col items-center z-10 bg-[#E8E1D7] rounded-lg shadow-lg w-full md:max-w-7xl max-w-xl p-6">
         <div className="flex justify-center flex-col items-center w-full mb-4 relative md:py-20 py-10">

@@ -10,7 +10,7 @@ const Dropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="lg:hidden text-gray-800">
+        <div className="lg:hidden text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -4,7 +4,7 @@ import { registerUser } from "@/lib/action";
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -17,22 +17,33 @@ const Page = () => {
   const handleRegister = async () => {
     try {
       await registerUser(email, password);
-      toast.success('User registered successfully');
-    }  catch (err) {
+      toast.success("User registered successfully");
+    } catch (err) {
       if (err instanceof Error) {
         toast.error(err.message);
       } else {
-        toast.error('An unknown error occurred');
+        toast.error("An unknown error occurred");
       }
     }
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   return (
     <div className="flex flex-col items-center justify-center w-screen md:pt-16 min-h-screen bg-cover bg-center relative">
       <Logo />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            border: "1px solid #713200",
+            padding: "16px",
+            color: "#161f77",
+            fontWeight: "bold",
+            background: "#E8E1D7",
+          },
+        }}
+      />
       <div className=" text-white text-xl space-y-2 font-bold md:mt-5 mt-20 md:max-w-lg max-w-sm">
         <div className="flex gap-2 bg-[#161f77] p-4 rounded-full px-5 border-2 border-orange-400  justify-between w-full">
           <p className="w-24">Email</p>

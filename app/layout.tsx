@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Background from "@/components/background";
 
 // If loading a variable font, you don't need to specify the font weight
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat} antialiased`}>
         <Navbar />
+        <Background />
         {children}
       </body>
     </html>

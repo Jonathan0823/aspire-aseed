@@ -1,7 +1,8 @@
 "use server"
 import bcrypt from 'bcryptjs';
 import { prisma } from './prisma';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
+import { revalidatePath } from 'next/cache';
 
 export async function loginUser(email: string, password: string) {
   const user = await prisma.user.findUnique({
@@ -16,15 +17,9 @@ export async function loginUser(email: string, password: string) {
   if (!isValid) {
     throw new Error('Invalid password');
   }
-  try{
-    await signIn('credentials', {email, password});
-  } catch (err) {
-    if (err instanceof Error) {
-      throw new Error(err.message);
-    } else {
-      throw new Error(String(err));
-    }
-  }
+ 
+    await signIn('credentials', {email, password, redirectTo: '/'});
+    revalidatePath('/');
 }
 
 export async function registerUser(email: string, password: string) {
@@ -52,4 +47,9 @@ export async function registerUser(email: string, password: string) {
         throw new Error(String(err));
       }
     }
+}
+
+export async function logoutUser() {
+  await signOut({redirectTo: '/login'});
+  revalidatePath('/login');
 }

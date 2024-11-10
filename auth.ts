@@ -11,39 +11,51 @@ export const {
   auth,
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  session: {strategy: 'jwt'},
-  providers: [Credentials({
-    name: "Credentials",
-    credentials: {
-      email: { label: "Email", type: "text" },
-      password: { label: "Password", type: "password" },
+  session: { strategy: "jwt" },
+  providers: [
+    Credentials({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      authorize: async (credentials) => {
+        const password = credentials.password as string;
+        const email = credentials.email as string;
+        console.log(email, password);
+
+        if (!email || !password) {
+          return null;
+        }
+
+        const user = await prisma.user.findFirst({
+          where: {
+            email: email,
+          },
+        });
+        console.log(user);
+
+        if (!user || !user.password) {
+          return null;
+        }
+
+        const isValid = await bcrypt.compare(password, user.password);
+        if (!isValid) {
+          return null;
+        }
+
+        return user;
+      },
+    }),
+  ],
+  callbacks: {
+    authorized: async ({ auth }) => {
+      // Logged in users are authenticated, otherwise redirect to login page
+      return !!auth;
     },
-    authorize: async (credentials) => {
-      const password = credentials.password as string;
-      const email = credentials.email as string;
-      console.log(email, password);
 
-      if(!email || !password) {
-        return null;
-      }
-
-      const user = await prisma.user.findFirst({
-        where: {
-          email: email,
-        },
-      });
-      console.log(user);
-
-      if(!user || !user.password) {
-        return null;
-      }
-
-      const isValid = await bcrypt.compare(password, user.password);
-      if (!isValid) {
-        return null;
-      }
-      
-      return user;
-    }
-  })],
+  },
+  pages: {
+    signIn: "/login",
+  },
 });

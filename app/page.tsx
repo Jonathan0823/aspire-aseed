@@ -1,6 +1,7 @@
 // pages/index.tsx
 import Image from "next/image";
 import Background from "@/components/background";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -31,16 +32,16 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="space-y-4 max-w-lg mx-auto flex flex-col mt-10 z-10">
-        <button className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2 ">
+      <div className="space-y-4 max-w-lg mx-auto flex flex-col mt-10 z-10 text-center">
+        <Link href="/" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2 ">
           Aspirasi Terbuka
-        </button>
-        <button className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2">
+        </Link>
+        <Link href="/" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2">
           Aspirasi Tertutup
-        </button>
-        <button className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2">
+        </Link>
+        <Link href="/" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2">
           Sexual Harassment
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const Dropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <button className="lg:hidden text-gray-800">
+        <div className="lg:hidden text-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -25,7 +25,7 @@ const Dropdown = () => {
               d="M4 6h16M4 12h16m-7 6h7"
             />
           </svg>
-        </button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-[#d2c6b7] min-w-44">
         <DropdownMenuItem>
@@ -33,21 +33,25 @@ const Dropdown = () => {
             href="/"
             className="text-blue-900 font-bold hover:text-blue-600"
           >
-            HOME
+            <div>HOME</div>
           </Link>
         </DropdownMenuItem>
-        <DropdownMenuItem><Link
-          href="/about"
-          className="text-blue-900 font-bold hover:text-blue-600"
-        >
-          ABOUT
-        </Link></DropdownMenuItem>
-        <DropdownMenuItem><Link
-          href="/contact"
-          className="text-blue-900 font-bold hover:text-blue-600"
-        >
-          CONTACT
-        </Link></DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
+            href="/about"
+            className="text-blue-900 font-bold hover:text-blue-600"
+          >
+            <div>ABOUT</div>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
+            href="/contact"
+            className="text-blue-900 font-bold hover:text-blue-600"
+          >
+            <div>CONTACT</div>
+          </Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

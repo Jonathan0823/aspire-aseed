@@ -1,6 +1,6 @@
 "use client";
 import Logo from "@/components/Logo";
-import { registerUser } from "@/lib/action";
+import { loginUser, registerUser } from "@/lib/action";
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -13,6 +13,16 @@ const Page = () => {
 
   const handleLogin = async () => {
     console.log(email, password);
+    try{
+      await loginUser(email, password);
+      toast.success("User logged in successfully");
+    } catch (err) {
+      if (err instanceof Error) {
+        toast.error(err.message);
+      } else {
+        toast.error("An unknown error occurred");
+      }
+    }
   };
   const handleRegister = async () => {
     try {

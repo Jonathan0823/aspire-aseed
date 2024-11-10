@@ -1,6 +1,6 @@
 "use client";
 import Logo from "@/components/Logo";
-import { registerUser } from "@/lib/actions";
+import { registerUser } from "@/lib/action";
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -14,13 +14,14 @@ const Page = () => {
     console.log(email, password);
   };
   const handleRegister = async () => {
-    try{
+    console.log(email, password);
+    try {
       await registerUser(email, password);
-      setEmail("");
-      setPassword("");
-    } catch{
-
+    } catch (err) {
+      console.log(err);
     }
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -32,6 +33,7 @@ const Page = () => {
           <p>:</p>
           <input
             type="email"
+            value={email}
             className="bg-[#161f77] focus:border-none w-52 focus:outline-none"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -42,6 +44,7 @@ const Page = () => {
           <div className="relative flex items-center">
             <input
               type={showPassword ? "text" : "password"}
+              value={password}
               className="bg-[#161f77] focus:border-none w-52 focus:outline-none"
               onChange={(e) => setPassword(e.target.value)}
             />

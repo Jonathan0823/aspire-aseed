@@ -7,7 +7,6 @@ export default function Background() {
       <Image
         src="/background.png"
         alt="background"
-        placeholder="blur"
         quality={100}
         fill
         sizes="100vw"

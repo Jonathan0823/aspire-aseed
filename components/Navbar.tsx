@@ -1,57 +1,40 @@
 // Navbar.tsx
-"use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
+import Dropdown from "./Dropdown";
 
 const Navbar: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <header className="absolute top-0 left-0 w-full md:px-20 px-2 flex justify-between items-center p-4 bg-opacity-30 bg-[#292929] backdrop-blur-lg z-10">
-     
       <div className="flex items-center space-x-2  px-4 py-2">
         <FaUserCircle className="text-white w-8 h-8" />
-        <span className="text-[#040180] bg-[#d2c6b7] bg-opacity-80 rounded-full p-2 font-semibold">English Education Department</span>
+        <span className="text-[#040180] bg-[#d2c6b7] bg-opacity-80 rounded-full p-2 font-semibold">
+          English Education Department
+        </span>
       </div>
 
-      
       <nav className="hidden lg:flex space-x-4 border-2 border-purple-500 rounded-full bg-[#d2c6b7] bg-opacity-80 px-6 py-2">
-        <Link href="/" className="text-blue-900 font-bold hover:text-blue-600">HOME</Link>
-        <Link href="/about" className="text-blue-900 font-bold hover:text-blue-600">ABOUT</Link>
-        <Link href="/contact" className="text-blue-900 font-bold hover:text-blue-600">CONTACT</Link>
+        <Link href="/" className="text-blue-900 font-bold hover:text-blue-600">
+          HOME
+        </Link>
+        <Link
+          href="/about"
+          className="text-blue-900 font-bold hover:text-blue-600"
+        >
+          ABOUT
+        </Link>
+        <Link
+          href="/contact"
+          className="text-blue-900 font-bold hover:text-blue-600"
+        >
+          CONTACT
+        </Link>
       </nav>
 
-      {/* Hamburger Icon for Mobile */}
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="lg:hidden text-gray-800"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </button>
-
-      {/* Dropdown Menu for Mobile */}
-      {menuOpen && (
-        <div className="absolute top-16 right-4 bg-[#d2c6b7] rounded-lg shadow-lg p-4 flex flex-col space-y-2 lg:hidden z-20">
-          <Link href="/" className="text-gray-800 font-semibold hover:text-blue-600">HOME</Link>
-          <Link href="/about" className="text-gray-800 font-semibold hover:text-blue-600">ABOUT</Link>
-          <Link href="/contact" className="text-gray-800 font-semibold hover:text-blue-600">CONTACT</Link>
-        </div>
-      )}
+      <div className="lg:hidden">
+        <Dropdown />
+      </div>
     </header>
   );
 };

@@ -3,7 +3,7 @@ import Image from "next/image"
 const Logo = () => {
   return (
     <div className="flex flex-col items-center z-10 bg-[#E8E1D7] rounded-3xl shadow-lg w-full md:max-w-7xl max-w-xl p-6">
-    <div className="flex justify-center flex-col items-center w-full mb-4 relative md:py-20 py-10">
+    <div className="flex justify-center flex-col items-center w-full mb-4 relative md:py-12 py-10">
       <Image
         src="/download-removebg-preview.png"
         alt="Logo"

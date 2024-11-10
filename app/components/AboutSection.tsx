@@ -1,6 +1,6 @@
 import Background from "@/app/components/background";
 
-const AboutSection: React.FC = () => {
+const AboutSection = () => {
   return (
     <div className="relative h-screen flex flex-col justify-center items-center">
       <Background />

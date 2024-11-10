@@ -1,12 +1,11 @@
 // Background.tsx
 import Image from "next/image";
-import background from "../assets/background.png"; // Adjust the path as necessary
 
 export default function Background() {
   return (
     <div className="absolute inset-0">
       <Image
-        src={background}
+        src="/background.png"
         alt="background"
         placeholder="blur"
         quality={100}

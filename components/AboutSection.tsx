@@ -1,4 +1,4 @@
-import Background from "@/app/components/background";
+import Background from "@/components/background";
 
 const AboutSection = () => {
   return (

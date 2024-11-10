@@ -18,7 +18,11 @@ const Page = () => {
       toast.success("User logged in successfully");
     } catch (err) {
       if (err instanceof Error) {
-        toast.error(err.message);
+        if (err.message.includes('NEXT_REDIRECT')) {
+          toast.success('User logged in successfully');
+        } else {
+          toast.error(err.message);
+        }
       } else {
         toast.error("An unknown error occurred");
       }

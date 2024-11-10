@@ -12,7 +12,10 @@ const Page = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-    console.log(email, password);
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
     try{
       await loginUser(email, password);
       toast.success("User logged in successfully");
@@ -29,6 +32,10 @@ const Page = () => {
     }
   };
   const handleRegister = async () => {
+    if (!email || !password) {
+      toast.error("Email and password are required");
+      return;
+    }
     try {
       await registerUser(email, password);
       toast.success("User registered successfully");

@@ -5,7 +5,7 @@ const AboutSection = () => {
     <div className="relative h-screen flex flex-col justify-center items-center">
       <Background />
 
-        <h2 className="bg-[#040180] border border-white text-2xl text-white rounded-full py-2 px-20 inline-block font-bold mb-4">
+        <h2 className="bg-[#040180] border lg:mt-0 mt-20 border-white text-2xl text-white rounded-full py-2 px-20 inline-block font-bold mb-4">
           ABOUT
         </h2>
       <div className="bg-[#d2c6b7] bg-opacity-90 rounded-lg p-8 md:max-w-xl mx-5 text-center">

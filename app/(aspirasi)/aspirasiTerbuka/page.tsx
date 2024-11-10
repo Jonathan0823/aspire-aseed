@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const page = () => {
     return (
         <div className="flex flex-col items-center justify-center w-screen h-screen bg-cover bg-center relative">
@@ -10,18 +12,18 @@ const page = () => {
             <div className="bg-[#d2c6b7] p-6 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg max-w-full sm:max-w-md md:max-w-lg lg:max-w-3xl w-full">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-[#161f77] mt-6">Konteks Keluhan</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-8">
-                    <button className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
+                    <Link href="/fasilitaskampus" className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
                         Fasilitas Kampus
-                    </button>
-                    <button className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
+                    </Link>
+                    <Link href="/kebersihan" className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
                         Kebersihan
-                    </button>
-                    <button className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
+                    </Link>
+                    <Link href="/keamanan" className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
                         Keamanan
-                    </button>
-                    <button className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
+                    </Link>
+                    <Link href="/akademik" className="bg-[#ececec] hover:bg-gray-300 text-[#161f77] font-bold py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 text-sm sm:text-lg md:text-xl rounded-lg">
                         Akademik
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

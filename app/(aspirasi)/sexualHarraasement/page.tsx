@@ -11,7 +11,7 @@ const page = () => {
 
     const handleNoClick = () => {
         
-        window.location.href = '/next-page'; 
+        window.location.href = '/formsexxualhar'; 
     };
 
     return (
@@ -41,6 +41,7 @@ const page = () => {
 
                 {isNameInputVisible && (
                     <div className="flex flex-col items-center space-y-6 mt-6">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-[#161f77] mt-6">Jika iya, Silahkan Masukkan Nama</h2>
                         <input 
                             type="text" 
                             placeholder="Masukkan Nama" 

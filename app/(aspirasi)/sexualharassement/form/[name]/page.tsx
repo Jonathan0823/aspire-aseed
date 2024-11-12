@@ -1,7 +1,7 @@
 
-const page = () => {
+const page = ({ params }: { params: { name: string } }) => {
   return (
-    <div>page</div>
+    <div>{params.name}</div>
   )
 }
 

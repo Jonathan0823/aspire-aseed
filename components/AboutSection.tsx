@@ -1,9 +1,7 @@
-import Background from "@/components/background";
 
 const AboutSection = () => {
   return (
     <div className="relative h-screen flex flex-col justify-center items-center">
-      <Background />
       <div className="flex flex-col justify-center items-center w-screen px-4">
         <h2 className="bg-[#040180] border lg:mt-0 mt-20 border-white text-2xl text-white rounded-full py-2 px-20 inline-block font-bold mb-4">
           ABOUT

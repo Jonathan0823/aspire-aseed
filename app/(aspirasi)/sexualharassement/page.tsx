@@ -33,11 +33,18 @@ const Page = () => {
                 <h2 className="text-3xl font-semibold text-center text-[#161f77] mt-6">Apakah anda bersedia memberikan nama?</h2>
                     {isNameInputVisible && (
                         <div className="flex flex-col items-center space-y-6">
-                            
+                            <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-center text-[#161f77] mt-2">Silahkan Masukkan Nama</h2>
+                            <input 
+                                type="text" 
+                                placeholder="Masukkan Nama" 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-80 md:w-96 p-4 text-lg rounded-lg border-2 border-[#161f77] focus:outline-none focus:ring-2 focus:ring-[#161f77]"
+                            />
                             <button className="bg-[#161f77] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#273968] transition"
                             onClick={handleKirimClick}
                             >
-                                Iya
+                                Kirim
                             </button>
                         </div>
                     )}

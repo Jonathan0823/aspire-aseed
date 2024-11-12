@@ -2,8 +2,9 @@
 import { useState } from "react";
 
 
-const page = () => {
+const Page = () => {
     const [isNameInputVisible, setIsNameInputVisible] = useState(false);
+    const [name, setName] = useState('');
 
     const handleYesClick = () => {
         setIsNameInputVisible(true);
@@ -11,8 +12,14 @@ const page = () => {
 
     const handleNoClick = () => {
         
-        window.location.href = '/formsexxualhar'; 
+        window.location.href = '/form'; 
     };
+
+    const handleKirimClick = () => {
+        window.location.href = '/sexualharassement/form/' + name;
+    }
+
+
 
     return (
         <div className="flex flex-col items-center justify-center w-screen h-screen bg-cover bg-center relative">
@@ -22,39 +29,43 @@ const page = () => {
                 </h3>
             </div>
 
-            <div className="bg-[#d2c6b7] p-6 sm:p-12 md:p-16 lg:p-20 xl:p-24 rounded-lg max-w-full sm:max-w-md md:max-w-lg lg:max-w-3xl w-full">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-[#161f77] mt-6">Apakah anda bersedia memberikan nama?</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-8">
+            <div className="bg-[#d2c6b7] p-2 rounded-3xl max-w-md md:max-w-lg lg:max-w-3xl w-full flex justify-center flex-col">
+                <h2 className="text-3xl font-semibold text-center text-[#161f77] mt-6">Apakah anda bersedia memberikan nama?</h2>
+                    {isNameInputVisible && (
+                        <div className="flex flex-col items-center space-y-6">
+                            <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-center text-[#161f77] mt-2">Silahkan Masukkan Nama</h2>
+                            <input 
+                                type="text" 
+                                placeholder="Masukkan Nama" 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-80 md:w-96 p-4 text-lg rounded-lg border-2 border-[#161f77] focus:outline-none focus:ring-2 focus:ring-[#161f77]"
+                            />
+                            <button className="bg-[#161f77] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#273968] transition"
+                            onClick={handleKirimClick}
+                            >
+                                Kirim
+                            </button>
+                        </div>
+                    )}
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mt-3 md:mt-8 md:py-0 py-4">
                     <button 
                         onClick={handleYesClick} 
-                        className="bg-[#161f77] text-white font-bold py-4 px-8 text-lg rounded-lg hover:bg-[#273968] transition"
+                        className="bg-[#161f77] text-white font-bold py-2 px-8 text-xl rounded-full hover:bg-[#273968] transition"
                     >
                         IYA
                     </button>
                     <button 
                         onClick={handleNoClick} 
-                        className="bg-[#161f77] text-white font-bold py-4 px-8 text-lg rounded-lg hover:bg-[#273968] transition"
+                        className="bg-[#161f77] text-white font-bold py-2 px-8 text-xl rounded-full hover:bg-[#273968] transition"
                     >
                         TIDAK
                     </button>
                 </div>
 
-                {isNameInputVisible && (
-                    <div className="flex flex-col items-center space-y-6 mt-6">
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center text-[#161f77] mt-6">Jika iya, Silahkan Masukkan Nama</h2>
-                        <input 
-                            type="text" 
-                            placeholder="Masukkan Nama" 
-                            className="w-80 sm:w-96 p-4 text-lg rounded-lg border-2 border-[#161f77] focus:outline-none focus:ring-2 focus:ring-[#161f77]"
-                        />
-                        <button className="bg-[#161f77] text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-[#273968] transition">
-                            Kirim
-                        </button>
-                    </div>
-                )}
             </div>
         </div>
     );
 };
 
-export default page;
+export default Page;

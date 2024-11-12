@@ -12,7 +12,7 @@ export default function Home() {
         <Link href="/aspirasitertutup" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#161f77] shadow-md hover:bg-[#1D2A56] border-2">
           Aspirasi Tertutup
         </Link>
-        <Link href="/sexualharraasement" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#161f77] shadow-md hover:bg-[#1D2A56] border-2">
+        <Link href="/sexualharassement" className="w-80 py-3 md:text-xl text-white font-bold rounded-full bg-[#161f77] shadow-md hover:bg-[#1D2A56] border-2">
           Sexual Harassment
         </Link>
       </div>

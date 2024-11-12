@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import Background from "@/components/background";
 import { SessionProvider } from "next-auth/react";
+import Image from "next/image";
 
 // If loading a variable font, you don't need to specify the font weight
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -23,7 +23,19 @@ export default function RootLayout({
       <body className={`${montserrat} antialiased`}>
         <SessionProvider>
           <Navbar />
-          <Background />
+          <div className="absolute inset-0">
+            <Image
+              src="/background.png"
+              alt="background"
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "cover",
+                zIndex: -1,
+              }}
+            />
+          </div>
           {children}
         </SessionProvider>
       </body>

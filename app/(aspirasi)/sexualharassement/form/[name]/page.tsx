@@ -1,8 +1,12 @@
+"use client"
+import { useRouter } from 'next/router';
 
-const page = ({ params }: { params: { name: string } }) => {
+const Page = () => {
+    const router = useRouter();
+    const { name } = router.query;
   return (
-    <div>{params.name}</div>
+    <div>{name}</div>
   )
 }
 
-export default page
+export default Page

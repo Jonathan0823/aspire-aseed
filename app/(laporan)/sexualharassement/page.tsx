@@ -11,7 +11,6 @@ const Page = () => {
     };
 
     const handleNoClick = () => {
-        
         window.location.href = '/sexualharassement/form'; 
     };
 

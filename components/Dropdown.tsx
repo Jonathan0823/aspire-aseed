@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,8 +6,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import Logout from "./Logout";
 
-const Dropdown = () => {
+const Dropdown = async () => {
+  const session = await auth();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -51,6 +54,12 @@ const Dropdown = () => {
           >
             <div>CONTACT</div>
           </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+        {session && (
+          <Logout />
+        )  
+        }
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

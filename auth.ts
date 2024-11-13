@@ -22,7 +22,6 @@ export const {
       authorize: async (credentials) => {
         const password = credentials.password as string;
         const email = credentials.email as string;
-        console.log(email, password);
 
         if (!email || !password) {
           return null;
@@ -33,7 +32,6 @@ export const {
             email: email,
           },
         });
-        console.log(user);
 
         if (!user || !user.password) {
           return null;

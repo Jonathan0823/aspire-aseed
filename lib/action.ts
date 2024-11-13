@@ -117,3 +117,13 @@ export async function createLaporanTertutup(
     }
   }
 }
+
+export async function getLaporanTerbuka() {
+  const laporan = await prisma.aspirasiTerbuka.findMany();
+  return laporan;
+}
+
+export async function getLaporanTertutup() {
+  const laporan = await prisma.aspirasiTertutup.findMany();
+  return laporan;
+}

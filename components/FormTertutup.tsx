@@ -16,10 +16,12 @@ const FormTertutup = ({ type }: { type: string }) => {
         <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
           <div className="text-[#161f77]">
             <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
-              {type
-                .split(" ")
-                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(" ")}
+              {type === "fasilitaskampus"
+                ? "Fasilitas Kampus"
+                : type
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}
             </div>
           </div>
 

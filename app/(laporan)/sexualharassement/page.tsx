@@ -12,7 +12,7 @@ const Page = () => {
 
     const handleNoClick = () => {
         
-        window.location.href = '/form'; 
+        window.location.href = '/sexualharassement/form'; 
     };
 
     const handleKirimClick = () => {

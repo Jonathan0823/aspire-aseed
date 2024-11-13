@@ -53,3 +53,13 @@ export async function logoutUser() {
   await signOut({redirectTo: '/login'});
   revalidatePath('/login');
 }
+
+export interface LaporanTerbuka {
+  title: string;
+  content: string;
+  category: string;
+}
+
+export async function createLaporanTerbuka(){
+  // create laporan
+}

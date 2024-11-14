@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { useEdgeStore } from "../lib/edgestore";
 import { SingleImageDropzone } from "./ImageDropper";
+import { createLaporanTerbuka } from "@/lib/action";
+import toast, { Toaster } from "react-hot-toast";
 
-const FormTerbuka = ({ type }: { type: string }) => {
+const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
   const [angkatan, setAngkatan] = useState("");
@@ -12,20 +14,34 @@ const FormTerbuka = ({ type }: { type: string }) => {
   const { edgestore } = useEdgeStore();
 
   const handleSubmit = async () => {
-    console.log(nama, kelas, angkatan, keluhan);
     if (!file) {
       return;
     }
     const res = await edgestore.publicFiles.upload({
       file,
       onProgressChange: (progress) => {
-        // you can use this to show a progress bar
         console.log(progress);
       },
     });
-    // you can run some server action or api here
-    // to add the necessary data to your database
-    console.log(res);
+    try {
+      await createLaporanTerbuka(
+        userId,
+        nama,
+        kelas,
+        angkatan,
+        keluhan,
+        res.url,
+        type
+      );
+      setNama("");
+      setKelas("");
+      setAngkatan("");
+      setKeluhan("");
+      setFile(undefined);
+      toast.success("Laporan berhasil dikirim");
+    } catch {
+      toast.error("Gagal mengirim laporan");
+    }
   };
 
   return (
@@ -34,6 +50,18 @@ const FormTerbuka = ({ type }: { type: string }) => {
         <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
           Aspirasi Terbuka
         </h3>
+        <Toaster
+          toastOptions={{
+            className: "",
+            style: {
+              border: "1px solid #713200",
+              padding: "16px",
+              color: "#161f77",
+              fontWeight: "bold",
+              background: "#E8E1D7",
+            },
+          }}
+        />
 
         <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
           <div className="text-[#161f77]">

@@ -70,6 +70,13 @@ export async function createLaporanTerbuka(
   type: string
 ) {
   try {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new Error('User not found');
+    }
     const laporan = await prisma.aspirasiTerbuka.create({
       data: {
         userId,

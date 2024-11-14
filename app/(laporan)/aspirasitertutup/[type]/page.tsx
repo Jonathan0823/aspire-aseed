@@ -13,7 +13,7 @@ const Page = async ({ params }: { params: Params }) => {
   }
   return (
     <div className="relative h-screen flex flex-col justify-center items-center">
-      <FormTertutup type={type} />
+      <FormTertutup type={type} userId={session.user?.id || ""} />
     </div>
   );
 };

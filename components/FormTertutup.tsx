@@ -1,10 +1,36 @@
 "use client";
+import { createLaporanTertutup } from "@/lib/action";
+import { useEdgeStore } from "@/lib/edgestore";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { SingleImageDropzone } from "./ImageDropper";
 
-const FormTertutup = ({ type }: { type: string }) => {
+const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
   const [angkatan, setAngkatan] = useState("");
   const [keluhan, setKeluhan] = useState("");
-  const [bukti, setBukti] = useState("");
+  const [file, setFile] = useState<File>();
+  const { edgestore } = useEdgeStore();
+
+  const handleSubmit = async () => {
+    if (!file) {
+      return;
+    }
+    const res = await edgestore.publicFiles.upload({
+      file,
+      onProgressChange: (progress) => {
+        console.log(progress);
+      },
+    });
+    try {
+      await createLaporanTertutup(userId, angkatan, keluhan, res.url, type);
+      setAngkatan("");
+      setKeluhan("");
+      setFile(undefined);
+      toast.success("Laporan berhasil dikirim");
+    } catch {
+      toast.error("Gagal mengirim laporan");
+    }
+  };
 
   return (
     <div>
@@ -12,6 +38,18 @@ const FormTertutup = ({ type }: { type: string }) => {
         <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
           Aspirasi Tertutup
         </h3>
+        <Toaster
+          toastOptions={{
+            className: "",
+            style: {
+              border: "1px solid #713200",
+              padding: "16px",
+              color: "#161f77",
+              fontWeight: "bold",
+              background: "#E8E1D7",
+            },
+          }}
+        />
 
         <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
           <div className="text-[#161f77]">
@@ -57,17 +95,23 @@ const FormTertutup = ({ type }: { type: string }) => {
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
               <p className="w-24">Bukti Keluhan</p>
               <p>:</p>
-              <input
-                type="file"
-                className=" w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                value={bukti}
-                onChange={(e) => setBukti(e.target.value)}
+              <SingleImageDropzone
+                width={200}
+                height={200}
+                value={file}
+                onChange={(file) => {
+                  setFile(file);
+                }}
+                className="bg-white"
               />
             </div>
           </div>
 
           <div className="flex justify-center mt-6">
-            <button className="bg-[#040180] text-white py-2 px-6 rounded-lg hover:bg-[#030e64] focus:outline-none">
+            <button
+              className="bg-[#040180] text-white py-2 px-6 rounded-lg hover:bg-[#030e64] focus:outline-none"
+              onClick={handleSubmit}
+            >
               Kirim
             </button>
           </div>

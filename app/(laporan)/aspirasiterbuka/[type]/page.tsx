@@ -11,9 +11,10 @@ const Page = async ({ params }: { params: Params }) => {
     redirect("/login");
   }
   const { type } = await params;
+  console.log(session);
   return (
     <div className="relative h-screen flex flex-col justify-center items-center">
-      <FormTerbuka type={type} />
+      <FormTerbuka type={type} userId={session.user?.id ?? ''} />
     </div>
   );
 };

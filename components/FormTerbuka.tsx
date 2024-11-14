@@ -1,15 +1,31 @@
 "use client";
 import { useState } from "react";
+import { useEdgeStore } from "../lib/edgestore";
+import { SingleImageDropzone } from "./ImageDropper";
 
 const FormTerbuka = ({ type }: { type: string }) => {
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
   const [angkatan, setAngkatan] = useState("");
   const [keluhan, setKeluhan] = useState("");
-  const [bukti, setBukti] = useState("");
+  const [file, setFile] = useState<File>();
+  const { edgestore } = useEdgeStore();
 
   const handleSubmit = async () => {
-    console.log(nama, kelas, angkatan, keluhan, bukti);
+    console.log(nama, kelas, angkatan, keluhan);
+    if (!file) {
+      return;
+    }
+    const res = await edgestore.publicFiles.upload({
+      file,
+      onProgressChange: (progress) => {
+        // you can use this to show a progress bar
+        console.log(progress);
+      },
+    });
+    // you can run some server action or api here
+    // to add the necessary data to your database
+    console.log(res);
   };
 
   return (
@@ -91,11 +107,14 @@ const FormTerbuka = ({ type }: { type: string }) => {
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
               <p className="w-24">Bukti Keluhan</p>
               <p>:</p>
-              <input
-                type="file"
-                className=" w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                value={bukti}
-                onChange={(e) => setBukti(e.target.value)}
+              <SingleImageDropzone
+                width={200}
+                height={200}
+                value={file}
+                onChange={(file) => {
+                  setFile(file);
+                }}
+                className="bg-white"
               />
             </div>
           </div>

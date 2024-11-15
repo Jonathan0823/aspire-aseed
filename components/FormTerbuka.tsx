@@ -14,8 +14,8 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
   const { edgestore } = useEdgeStore();
 
   const handleSubmit = async () => {
-    if (!file) {
-      return;
+    if (!file || !nama || !kelas || !angkatan || !keluhan) {
+      return toast.error("Data yang anda masukkan kurang lengkap");
     }
     const res = await edgestore.publicFiles.upload({
       file,

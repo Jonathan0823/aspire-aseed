@@ -125,6 +125,35 @@ export async function createLaporanTertutup(
   }
 }
 
+export async function createLaporanSexHar(
+  userId: string,
+  deskripsi: string,
+  nama: string,
+  ciriPelaku: string,
+  bukti: string,
+  kontak: string
+){
+ try{
+  const laporan = await prisma.sexualHarassment.create({
+    data:{
+      userId,
+      AlurKejadian: deskripsi,
+      kontak,
+      nama,
+      ciriPelaku,
+      buktiKeluhan: bukti
+    }
+  });
+  return laporan;
+ } catch (err) {
+  if (err instanceof Error) {
+    throw new Error(err.message);
+  } else {
+    throw new Error(String(err));
+  }
+}
+}
+
 export async function getLaporanTerbuka() {
   const laporan = await prisma.aspirasiTerbuka.findMany();
   return laporan;
@@ -132,5 +161,10 @@ export async function getLaporanTerbuka() {
 
 export async function getLaporanTertutup() {
   const laporan = await prisma.aspirasiTertutup.findMany();
+  return laporan;
+}
+
+export async function getLaporanSexHar() {
+  const laporan = await prisma.sexualHarassment.findMany();
   return laporan;
 }

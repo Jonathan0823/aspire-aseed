@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { SessionProvider } from "next-auth/react";
 import Image from "next/image";
+import { EdgeStoreProvider } from "../lib/edgestore";
 
 // If loading a variable font, you don't need to specify the font weight
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -18,8 +19,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
     <html lang="en">
       <body className={`${montserrat} antialiased`}>
@@ -38,7 +37,7 @@ export default function RootLayout({
               }}
             />
           </div>
-          {children}
+          <EdgeStoreProvider>{children}</EdgeStoreProvider>
         </SessionProvider>
       </body>
     </html>

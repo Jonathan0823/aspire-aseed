@@ -22,7 +22,6 @@ export const {
       authorize: async (credentials) => {
         const password = credentials.password as string;
         const email = credentials.email as string;
-        console.log(email, password);
 
         if (!email || !password) {
           return null;
@@ -33,7 +32,6 @@ export const {
             email: email,
           },
         });
-        console.log(user);
 
         if (!user || !user.password) {
           return null;
@@ -44,16 +42,25 @@ export const {
           return null;
         }
 
-        return user;
+        return { id: user.id, email: user.email };
       },
     }),
   ],
   callbacks: {
-    authorized: async ({ auth }) => {
-      // Logged in users are authenticated, otherwise redirect to login page
-      return !!auth;
+    async jwt({ token, user }) {
+      // Add user id to the token
+      if (user) {
+        token.id = user.id as string;
+      }
+      return token;
     },
-
+    async session({ session, token }) {
+      // Add user id to the session
+      if (token) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
   },
   pages: {
     signIn: "/login",

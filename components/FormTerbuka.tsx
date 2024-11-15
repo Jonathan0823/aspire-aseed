@@ -75,64 +75,60 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
             </div>
           </div>
 
-          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full max-w-md">
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
               <p className="w-24">Nama</p>
               <p>:</p>
               <input
                 type="text"
                 value={nama}
-                className=" w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                placeholder="Masukkan Nama"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Nama"
                 onChange={(e) => setNama(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full max-w-md">
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
               <p className="w-24">Kelas</p>
               <p>:</p>
               <input
                 type="text"
                 value={kelas}
-                className=" w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                placeholder="Masukkan Kelas"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Kelas"
                 onChange={(e) => setKelas(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full max-w-md">
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
               <p className="w-24">Angkatan</p>
               <p>:</p>
               <input
                 type="text"
                 value={angkatan}
-                className="border  w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
                 onChange={(e) => setAngkatan(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full max-w-md">
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
               <p className="w-24">Detail Keluhan</p>
               <p>:</p>
               <input
                 type="text"
                 value={keluhan}
-                className="border  w-full sm:w-52 focus:outline-none px-3 py-2 rounded-full"
-                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
                 onChange={(e) => setKeluhan(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full max-w-md">
-            <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
+            <div className="flex gap-2 p-4 rounded-full px-5 w-full">
               <p className="w-24">Bukti Keluhan</p>
               <p>:</p>
               <SingleImageDropzone
@@ -142,7 +138,7 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
                 onChange={(file) => {
                   setFile(file);
                 }}
-                className="bg-white"
+                className="bg-white ml-20"
               />
             </div>
           </div>

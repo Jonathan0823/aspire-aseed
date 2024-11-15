@@ -14,7 +14,8 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
   const { edgestore } = useEdgeStore();
 
   const handleSubmit = async () => {
-    if (!nama || !description || !file || !pelaku)
+    if (!nama && name) return toast.error("Nama tidak boleh kosong");
+    if (!description || !file || !pelaku)
       return toast.error("Data yang anda masukkan kurang lengkap");
     try {
       const res = await edgestore.publicFiles.upload({

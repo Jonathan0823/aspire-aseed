@@ -1,7 +1,8 @@
-import { auth } from "@/auth";
-import SexualHarr from "@/components/SexualHarr";
+import { auth } from '@/auth';
+import SexualHarr from '@/components/SexualHarr';
+import React from 'react'
 
-export const Page = async () => {
+const page = async () => {
   const session = await auth();
 
   return (
@@ -9,4 +10,6 @@ export const Page = async () => {
       <SexualHarr name={""} userId={session?.user?.id || ""} />
     </div>
   );
-};
+}
+
+export default page

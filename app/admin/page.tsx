@@ -1,12 +1,15 @@
-import { auth } from "@/auth"
-import { redirect } from "next/navigation";
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
+import React from 'react'
 
-export const Page = async () => {
-    const session = await auth();
-    if (!session?.user?.id?.includes("admin")) {
-      redirect("/");
-    }
-  return (
-    <div>Admin Page</div>
-  )
+const page = async () => {
+  const session = await auth();
+  if (!session?.user?.id?.includes("admin")) {
+    redirect("/");
+  }
+return (
+  <div>Admin Page</div>
+)
 }
+
+export default page

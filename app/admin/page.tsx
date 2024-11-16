@@ -1,41 +1,34 @@
-import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
-import React from 'react';
-
-
-const fetchLaporan = async (endpoint: string) => {
-  try {
-    const response = await fetch(endpoint, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      cache: 'no-store', 
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
+import { auth } from "@/auth";
+import {
+  getLaporanSexHar,
+  getLaporanTerbuka,
+  getLaporanTertutup,
+} from "@/lib/action";
+import { redirect } from "next/navigation";
 
 const page = async () => {
   // Simulasi autentikasi
   const user = await auth();
-  if (!user) {
-    redirect('/login');
-    return null;
+  if (!user?.user?.id?.startsWith("admin")) {
+    redirect("/");
   }
 
+  const getLaporan = [
+    getLaporanTerbuka(),
+    getLaporanTertutup(),
+    getLaporanSexHar(),
+  ];
+  const [laporanTerbuka, laporanTertutup, laporanSexHar] = await Promise.all(
+    getLaporan
+  );
 
-  const laporanTerbuka = await fetchLaporan('/api/laporanTerbuka');
-  const laporanTertutup = await fetchLaporan('/api/laporanTertutup');
-  const laporanSexHar = await fetchLaporan('/api/laporanSexualHarassment');
+  const formatType = (type: string) => {
+   if (type === "fasilitaskampus"){
+    return "Fasilitas Kampus"
+   } else{
+    return type.charAt(0).toUpperCase() + type.slice(1);
+   }
+  }
 
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen bg-cover bg-center relative">
@@ -57,31 +50,56 @@ const page = async () => {
             <thead>
               <tr className="bg-gray-200 text-left">
                 <th className="border border-gray-300 px-4 py-2">Nama</th>
-                <th className="border border-gray-300 px-4 py-2">Konteks Keluhan</th>
+                <th className="border border-gray-300 px-4 py-2">Kelas</th>
                 <th className="border border-gray-300 px-4 py-2">Angkatan</th>
-                <th className="border border-gray-300 px-4 py-2">Detail Keluhan</th>
-                <th className="border border-gray-300 px-4 py-2">Bukti Keluhan</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Konteks Keluhan
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Detail Keluhan
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Bukti Keluhan
+                </th>
               </tr>
             </thead>
             <tbody>
-              {laporanTerbuka.map((laporan: any, index: number) => (
-                <tr key={index} className="hover:bg-gray-100">
-                  <td className="border border-gray-300 px-4 py-2">{laporan.nama}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.konteksKeluhan}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.angkatan}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.detailKeluhan}</td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    <a href={laporan.buktiKeluhan} className="text-blue-500 hover:underline">
-                      Lihat Bukti
-                    </a>
-                  </td>
-                </tr>
-              ))}
+              {laporanTerbuka.map(
+                (laporan: {
+                  id: string;
+                  nama?: string;
+                  kelas?: string;
+                  angkatan?: string;
+                  type?: string;
+                  keluhan?: string;
+                  buktiKeluhan?: string;
+                }) => (
+                  <tr key={laporan.id}>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {"nama" in laporan ? laporan.nama : "N/A"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {"kelas" in laporan ? laporan.kelas : "N/A"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {"angkatan" in laporan ? laporan.angkatan : "N/A"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {"type" in laporan ? formatType(laporan.type || "") : "N/A"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {"keluhan" in laporan ? laporan.keluhan : "N/A"}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {laporan.buktiKeluhan}
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
 
-      
         <div className="text-[#161f77] mt-8">
           <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
             Laporan Aspirasi Tertutup
@@ -92,31 +110,22 @@ const page = async () => {
             <thead>
               <tr className="bg-gray-200 text-left">
                 <th className="border border-gray-300 px-4 py-2">Nama</th>
-                <th className="border border-gray-300 px-4 py-2">Konteks Keluhan</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Konteks Keluhan
+                </th>
                 <th className="border border-gray-300 px-4 py-2">Angkatan</th>
-                <th className="border border-gray-300 px-4 py-2">Detail Keluhan</th>
-                <th className="border border-gray-300 px-4 py-2">Bukti Keluhan</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Detail Keluhan
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Bukti Keluhan
+                </th>
               </tr>
             </thead>
-            <tbody>
-              {laporanTertutup.map((laporan: any, index: number) => (
-                <tr key={index} className="hover:bg-gray-100">
-                  <td className="border border-gray-300 px-4 py-2">{laporan.nama}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.konteksKeluhan}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.angkatan}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.detailKeluhan}</td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    <a href={laporan.buktiKeluhan} className="text-blue-500 hover:underline">
-                      Lihat Bukti
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
 
-      
         <div className="text-[#161f77] mt-8">
           <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
             Sexual Harassment
@@ -127,27 +136,19 @@ const page = async () => {
             <thead>
               <tr className="bg-gray-200 text-left">
                 <th className="border border-gray-300 px-4 py-2">Nama</th>
-                <th className="border border-gray-300 px-4 py-2">Deskripsi Alur Kejadian</th>
-                <th className="border border-gray-300 px-4 py-2">Deskripsi Ciri Pelaku</th>
-                <th className="border border-gray-300 px-4 py-2">Bukti Keluhan</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Deskripsi Alur Kejadian
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Deskripsi Ciri Pelaku
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Bukti Keluhan
+                </th>
                 <th className="border border-gray-300 px-4 py-2">Kontak</th>
               </tr>
             </thead>
-            <tbody>
-              {laporanSexHar.map((laporan: any, index: number) => (
-                <tr key={index} className="hover:bg-gray-100">
-                  <td className="border border-gray-300 px-4 py-2">{laporan.nama}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.deskripsiKejadian}</td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.deskripsiPelaku}</td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    <a href={laporan.buktiKeluhan} className="text-blue-500 hover:underline">
-                      Lihat Bukti
-                    </a>
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">{laporan.kontak}</td>
-                </tr>
-              ))}
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>

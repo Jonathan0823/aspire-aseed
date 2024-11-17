@@ -30,7 +30,7 @@ const LaporanList = ({ laporan, type }: LaporanListProps) => {
   );
 
   return (
-    <div className="overflow-x-auto max-h-40">
+    <div className="overflow-x-auto max-h-60">
       <table className="min-w-full bg-white">
         <thead>
           <tr className="bg-gray-200 py-3 rounded-t-xl px-5 font-bold">

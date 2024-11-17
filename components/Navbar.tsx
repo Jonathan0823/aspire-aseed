@@ -37,6 +37,14 @@ const Navbar: React.FC = async () => {
         >
           CONTACT
         </Link>
+        {session && session.user?.id?.startsWith("admin") && (
+          <Link
+          href="/admin"
+          className="text-blue-900 font-bold hover:text-blue-600"
+        >
+          ADMIN
+        </Link>
+        )}
         {session && (
           <Logout />
         )  

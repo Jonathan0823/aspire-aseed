@@ -75,7 +75,7 @@ export async function createLaporanTerbuka(
     });
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     const laporan = await prisma.aspirasiTerbuka.create({
       data: {
@@ -132,26 +132,26 @@ export async function createLaporanSexHar(
   ciriPelaku: string,
   bukti: string,
   kontak: string
-){
- try{
-  const laporan = await prisma.sexualHarassment.create({
-    data:{
-      userId,
-      AlurKejadian: deskripsi,
-      kontak,
-      nama,
-      ciriPelaku,
-      buktiKeluhan: bukti
+) {
+  try {
+    const laporan = await prisma.sexualHarassment.create({
+      data: {
+        userId,
+        AlurKejadian: deskripsi,
+        kontak,
+        nama,
+        ciriPelaku,
+        buktiKeluhan: bukti,
+      },
+    });
+    return laporan;
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    } else {
+      throw new Error(String(err));
     }
-  });
-  return laporan;
- } catch (err) {
-  if (err instanceof Error) {
-    throw new Error(err.message);
-  } else {
-    throw new Error(String(err));
   }
-}
 }
 
 export async function getLaporanTerbuka() {
@@ -167,4 +167,33 @@ export async function getLaporanTertutup() {
 export async function getLaporanSexHar() {
   const laporan = await prisma.sexualHarassment.findMany();
   return laporan;
+}
+
+export async function getLaporanById(id: string, type: string) {
+  if (type === "tertutup") {
+    const laporan = await prisma.aspirasiTertutup.findUnique({
+      where: {
+        id,
+      },
+    });
+    return laporan;
+  }
+
+  if (type === "terbuka") {
+    const laporan = await prisma.aspirasiTerbuka.findUnique({
+      where: {
+        id,
+      },
+    });
+    return laporan;
+  }
+
+  if (type === "sexual") {
+    const laporan = await prisma.sexualHarassment.findUnique({
+      where: {
+        id,
+      },
+    });
+    return laporan;
+  }
 }

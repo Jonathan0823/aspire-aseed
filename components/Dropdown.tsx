@@ -56,11 +56,16 @@ const Dropdown = async () => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-        {session && (
-          <Logout />
-        )  
-        }
+          {session && session.user?.id?.startsWith("admin") && (
+            <Link
+              href="/admin"
+              className="text-blue-900 font-bold hover:text-blue-600"
+            >
+              ADMIN
+            </Link>
+          )}
         </DropdownMenuItem>
+        <DropdownMenuItem>{session && <Logout />}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

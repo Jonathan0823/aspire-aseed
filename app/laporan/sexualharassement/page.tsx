@@ -11,11 +11,11 @@ const Page = () => {
     };
 
     const handleNoClick = () => {
-        window.location.href = '/sexualharassement/form'; 
+        window.location.href = '/laporan/sexualharassement/form'; 
     };
 
     const handleKirimClick = () => {
-        window.location.href = '/sexualharassement/form/' + name;
+        window.location.href = '/laporan/sexualharassement/form/' + name;
     }
 
 

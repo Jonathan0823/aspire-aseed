@@ -15,23 +15,23 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
     if (!file) {
       return;
     }
+    toast.loading("Mengirim laporan...");
     const res = await edgestore.publicFiles.upload({
       file,
-      onProgressChange: (progress) => {
-        console.log(progress);
-      },
     });
     try {
       await createLaporanTertutup(userId, angkatan, keluhan, res.url, type);
       setAngkatan("");
       setKeluhan("");
       setFile(undefined);
+      toast.dismiss();
       toast.success("Laporan berhasil dikirim");
     } catch {
+      toast.dismiss();
       toast.error("Gagal mengirim laporan");
     }
   };
-
+  
   return (
     <div>
       <div className="flex flex-col justify-center items-center w-screen px-4 pt-20">
@@ -40,9 +40,7 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
         </h3>
         <Toaster
           toastOptions={{
-            className: "",
             style: {
-              border: "1px solid #713200",
               padding: "16px",
               color: "#161f77",
               fontWeight: "bold",
@@ -70,7 +68,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={angkatan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
+                placeholder="Masukkan Angkatan"
                 onChange={(e) => setAngkatan(e.target.value)}
               />
             </div>
@@ -83,7 +82,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={keluhan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
+                placeholder="Masukkan Angkatan"
                 onChange={(e) => setKeluhan(e.target.value)}
               />
             </div>

@@ -162,6 +162,7 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           <div className="flex gap-2 p-4 rounded-full px-5 w-full">
             <p className="w-24">Bukti Keluhan</p>
             <p>:</p>
+          </div>
             {laporan?.buktiKeluhan && (
               <Image
                 src={laporan.buktiKeluhan}
@@ -170,7 +171,6 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
                 height={500}
               />
             )}
-          </div>
         </div>
       </div>
     </div>

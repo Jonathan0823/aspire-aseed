@@ -20,11 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat} antialiased`}>
+    <html lang="en" style={{ height: '100%', overflow: 'hidden' }}>
+      <body className={`${montserrat} antialiased`} style={{ height: '100%', overflow: 'hidden' }}>
         <SessionProvider>
           <Navbar />
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 ">
             <Image
               src="/background.png"
               alt="background"

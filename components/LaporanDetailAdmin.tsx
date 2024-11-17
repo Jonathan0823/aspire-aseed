@@ -114,6 +114,32 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           </div>
         )}
 
+        {type === "sexual" && (
+          <>
+            <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
+              <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
+                <p className="w-24">Nama</p>
+                <p>:</p>
+                <p>
+                  {laporan && "nama" in laporan && laporan.nama.trim() !== ""
+                    ? (laporan as { nama: string }).nama
+                    : "Anon"}
+                </p>
+              </div>
+            </div>
+
+            {laporan && "kontak" in laporan && laporan.kontak.trim() !== "" && (
+              <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
+                <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
+                  <p className="w-24">Kontak</p>
+                  <p>:</p>
+                  <p>{laporan.kontak}</p>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
             <p className="w-24">

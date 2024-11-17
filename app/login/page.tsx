@@ -17,16 +17,21 @@ const Page = () => {
       return;
     }
     try {
+      toast.loading("Logging in...");
       await loginUser(email, password);
+      toast.dismiss();
       toast.success("User logged in successfully");
     } catch (err) {
       if (err instanceof Error) {
         if (err.message.includes("NEXT_REDIRECT")) {
+          toast.dismiss();
           toast.success("User logged in successfully");
         } else {
+          toast.dismiss();
           toast.error(err.message);
         }
       } else {
+        toast.dismiss();
         toast.error("An unknown error occurred");
       }
     }
@@ -37,12 +42,16 @@ const Page = () => {
       return;
     }
     try {
+      toast.loading("Registering user...");
       await registerUser(email, password);
+      toast.dismiss();
       toast.success("User registered successfully");
     } catch (err) {
       if (err instanceof Error) {
+        toast.dismiss();
         toast.error(err.message);
       } else {
+        toast.dismiss();
         toast.error("An unknown error occurred");
       }
     }

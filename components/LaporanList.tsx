@@ -38,7 +38,7 @@ const LaporanList = ({ laporan, type }: LaporanListProps) => {
                 <Link href={`/admin/laporan/${laporan.id}`}>
                   {type === "sexual"
                     ? laporan.nama
-                      ? laporan.nama || ""
+                      ? laporan.nama || " "
                       : "Anon"
                     : laporan.type
                     ? formatType(laporan.type || "")

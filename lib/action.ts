@@ -187,8 +187,8 @@ export async function getLaporanById(id: string, type: string) {
     });
     return laporan;
   }
-  
-  if (type === "sexhar") {
+
+  if (type === "sexual") {
     const laporan = await prisma.sexualHarassment.findUnique({
       where: {
         id,

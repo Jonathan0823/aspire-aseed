@@ -57,7 +57,7 @@ const LaporanList = ({ laporan, type }: LaporanListProps) => {
                 </Link>
               </td>
               <td className="w-2/3 py-3 px-5">
-                <Link href={`/admin/laporan/${laporan.id}`}>
+                <Link href={`/admin/laporan/${laporan.id}?type=${type}`}>
                   {type === "sexual"
                     ? laporan.AlurKejadian
                       ? laporan.AlurKejadian

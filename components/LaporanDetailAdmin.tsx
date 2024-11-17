@@ -100,24 +100,35 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
             </div>
           </>
         )}
-
-        <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
-          <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
-            <p className="w-24">Angkatan</p>
-            <p>:</p>
-            <p>
-              {laporan && "angkatan" in laporan
-                ? (laporan as { angkatan: string }).angkatan
-                : ""}
-            </p>
+        {type !== "sexual" && (
+          <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
+            <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
+              <p className="w-24">Angkatan</p>
+              <p>:</p>
+              <p>
+                {laporan && "angkatan" in laporan
+                  ? (laporan as { angkatan: string }).angkatan
+                  : ""}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-            <p className="w-24">Detail Keluhan</p>
+            <p className="w-24">
+              {type === "sexual" ? "Alur Kejadian" : "Detail Keluhan"}
+            </p>
             <p>:</p>
-            <p></p>
+            <p>
+              {type === "sexual"
+                ? laporan && "AlurKejadian" in laporan
+                  ? (laporan as { AlurKejadian: string }).AlurKejadian
+                  : ""
+                : laporan && "keluhan" in laporan
+                ? (laporan as { keluhan: string }).keluhan
+                : ""}
+            </p>
           </div>
         </div>
 

@@ -6,6 +6,7 @@ type Laporan = {
   nama?: string;
   keluhan?: string;
   AlurKejadian?: string;
+  createdAt: string;
 };
 
 type LaporanListProps = {
@@ -22,6 +23,9 @@ const LaporanList = ({ laporan, type }: LaporanListProps) => {
     }
   };
 
+  const sortedLaporan = laporan.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  
+
   return (
     <div className="overflow-x-auto max-h-52">
       <table className="min-w-full bg-white">
@@ -32,7 +36,7 @@ const LaporanList = ({ laporan, type }: LaporanListProps) => {
           </tr>
         </thead>
         <tbody className="overflow-y-auto">
-          {laporan.map((laporan: Laporan) => (
+          {sortedLaporan.map((laporan: Laporan) => (
             <tr key={laporan.id} className="bg-white py-3 px-5 rounded-xl">
               <td className="w-1/3 border-r border-black py-3 px-5">
                 <Link href={`/admin/laporan/${laporan.id}`}>

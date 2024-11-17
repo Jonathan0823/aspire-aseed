@@ -39,21 +39,21 @@ const page = async () => {
             Laporan Aspirasi Terbuka
           </div>
         </div>
-        <LaporanList laporan={laporanTerbuka} type=""/>
+        <LaporanList laporan={laporanTerbuka.map(laporan => ({ ...laporan, createdAt: laporan.createdAt.toISOString(), updatedAt: laporan.updatedAt.toISOString() }))} type=""/>
 
         <div className="text-[#161f77]">
           <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
             Laporan Aspirasi Tertutup
           </div>
         </div>
-        <LaporanList laporan={laporanTertutup} type=""/>
+        <LaporanList laporan={laporanTertutup.map(laporan => ({ ...laporan, createdAt: laporan.createdAt.toISOString(), updatedAt: laporan.updatedAt.toISOString() }))} type=""/>
 
         <div className="text-[#161f77]">
           <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
             Laporan Sexual Harassment
           </div>
         </div>
-        <LaporanList laporan={laporanSexHar} type="sexual" />
+        <LaporanList laporan={laporanSexHar.map(laporan => ({ ...laporan, createdAt: laporan.createdAt.toISOString(), updatedAt: laporan.updatedAt.toISOString() }))} type="sexual" />
       </div>
     </div>
   );

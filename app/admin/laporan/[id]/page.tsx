@@ -1,10 +1,11 @@
 import { auth } from "@/auth";
+import LaporanDetailAdmin from "@/components/LaporanDetailAdmin";
 import { redirect } from "next/navigation";
 import React from "react";
 
 type Params = Promise<{ id: string }>;
 
-const page = async ({ params }: { params: Params }) => {
+const Page = async ({ params }: { params: Params }) => {
   const { id } = await params;
   // Simulasi autentikasi
   const user = await auth();
@@ -12,7 +13,9 @@ const page = async ({ params }: { params: Params }) => {
     redirect("/");
   }
 
-  return <div>{id}</div>;
+  return <div>
+    <LaporanDetailAdmin id={id} />
+  </div>;
 };
 
-export default page;
+export default Page;

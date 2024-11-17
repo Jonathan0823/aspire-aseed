@@ -56,7 +56,6 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
     fetchLaporan();
   }, [type]);
 
-
   return (
     <div className="flex flex-col z-50 justify-center items-center w-screen px-4 pt-20">
       <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
@@ -70,7 +69,7 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
       <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
         {type !== "sexual" && (
           <div className="text-[#161f77]">
-            <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
+            <div className="bg-[#ececec] font-bold px-4 py-2 text-lg md:text-xl rounded-lg inline-block">
               {formatType(laporan && "type" in laporan ? laporan.type : "")}
             </div>
           </div>
@@ -80,17 +79,19 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           <>
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="w-24">Nama</p>
+                <p className="md:w-1/3 w-1/4">Nama</p>
                 <p>:</p>
-                <p>{laporan && "nama" in laporan ? laporan.nama : ""}</p>
+                <p className="w-3/4 md:w-2/3 ml-3">
+                  {laporan && "nama" in laporan ? laporan.nama : ""}
+                </p>
               </div>
             </div>
 
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="w-24">Kelas</p>
+                <p className="md:w-1/3 w-1/4">Kelas</p>
                 <p>:</p>
-                <p>
+                <p className="w-3/4 md:w-2/3 ml-3">
                   {laporan && "kelas" in laporan
                     ? (laporan as { kelas: string }).kelas
                     : ""}
@@ -102,9 +103,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
         {type !== "sexual" && (
           <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
-              <p className="w-24">Angkatan</p>
+              <p className="md:w-1/3 w-1/4">Angkatan</p>
               <p>:</p>
-              <p>
+              <p className="w-3/4 md:w-2/3 ml-3">
                 {laporan && "angkatan" in laporan
                   ? (laporan as { angkatan: string }).angkatan
                   : ""}
@@ -117,9 +118,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           <>
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="w-24">Nama</p>
+                <p className="md:w-1/3 w-1/4">Nama</p>
                 <p>:</p>
-                <p>
+                <p className="w-3/4 md:w-2/3 ml-3">
                   {laporan && "nama" in laporan && laporan.nama.trim() !== ""
                     ? (laporan as { nama: string }).nama
                     : "Anon"}
@@ -130,9 +131,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
             {laporan && "kontak" in laporan && laporan.kontak.trim() !== "" && (
               <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
                 <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                  <p className="w-24">Kontak</p>
+                  <p className="md:w-1/3 w-1/4">Kontak</p>
                   <p>:</p>
-                  <p>{laporan.kontak}</p>
+                  <p className="w-3/4 md:w-2/3 ml-3">{laporan.kontak}</p>
                 </div>
               </div>
             )}
@@ -141,11 +142,11 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-            <p className="w-24">
+            <p className="md:w-1/3 w-1/4">
               {type === "sexual" ? "Alur Kejadian" : "Detail Keluhan"}
             </p>
             <p>:</p>
-            <p>
+            <p className="w-3/4 md:w-2/3 ml-3">
               {type === "sexual"
                 ? laporan && "AlurKejadian" in laporan
                   ? (laporan as { AlurKejadian: string }).AlurKejadian
@@ -159,17 +160,18 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 w-full">
-            <p className="w-24">Bukti Keluhan</p>
+            <p className="md:w-1/3 w-1/4">Bukti Keluhan</p>
             <p>:</p>
+            <p className="w-3/4 md:w-2/3 ml-3"></p>
           </div>
-            {laporan?.buktiKeluhan && (
-              <Image
-                src={laporan.buktiKeluhan}
-                alt="bukti"
-                width={500}
-                height={500}
-              />
-            )}
+          {laporan?.buktiKeluhan && (
+            <Image
+              src={laporan.buktiKeluhan}
+              alt="bukti"
+              width={500}
+              height={500}
+            />
+          )}
         </div>
       </div>
     </div>

@@ -79,9 +79,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           <>
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="md:w-1/3 w-1/4">Nama</p>
+                <p className="md:w-1/3 w-2/5">Nama</p>
                 <p>:</p>
-                <p className="w-3/4 md:w-2/3 ml-3">
+                <p className="w-3/5 md:w-2/3 ml-3">
                   {laporan && "nama" in laporan ? laporan.nama : ""}
                 </p>
               </div>
@@ -89,9 +89,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="md:w-1/3 w-1/4">Kelas</p>
+                <p className="md:w-1/3 w-2/5">Kelas</p>
                 <p>:</p>
-                <p className="w-3/4 md:w-2/3 ml-3">
+                <p className="w-3/5 md:w-2/3 ml-3">
                   {laporan && "kelas" in laporan
                     ? (laporan as { kelas: string }).kelas
                     : ""}
@@ -103,9 +103,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
         {type !== "sexual" && (
           <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
             <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
-              <p className="md:w-1/3 w-1/4">Angkatan</p>
+              <p className="md:w-1/3 w-2/5">Angkatan</p>
               <p>:</p>
-              <p className="w-3/4 md:w-2/3 ml-3">
+              <p className="w-3/5 md:w-2/3 ml-3">
                 {laporan && "angkatan" in laporan
                   ? (laporan as { angkatan: string }).angkatan
                   : ""}
@@ -118,9 +118,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
           <>
             <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
               <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                <p className="md:w-1/3 w-1/4">Nama</p>
+                <p className="md:w-1/3 w-2/5">Nama</p>
                 <p>:</p>
-                <p className="w-3/4 md:w-2/3 ml-3">
+                <p className="w-3/5 md:w-2/3 ml-3">
                   {laporan && "nama" in laporan && laporan.nama.trim() !== ""
                     ? (laporan as { nama: string }).nama
                     : "Anon"}
@@ -131,9 +131,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
             {laporan && "kontak" in laporan && laporan.kontak.trim() !== "" && (
               <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
                 <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-                  <p className="md:w-1/3 w-1/4">Kontak</p>
+                  <p className="md:w-1/3 w-2/5">Kontak</p>
                   <p>:</p>
-                  <p className="w-3/4 md:w-2/3 ml-3">{laporan.kontak}</p>
+                  <p className="w-3/5 md:w-2/3 ml-3">{laporan.kontak}</p>
                 </div>
               </div>
             )}
@@ -142,11 +142,11 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-            <p className="md:w-1/3 w-1/4">
+            <p className="md:w-1/3 w-2/5">
               {type === "sexual" ? "Alur Kejadian" : "Detail Keluhan"}
             </p>
             <p>:</p>
-            <p className="w-3/4 md:w-2/3 ml-3">
+            <p className="w-3/5 md:w-2/3 ml-3">
               {type === "sexual"
                 ? laporan && "AlurKejadian" in laporan
                   ? (laporan as { AlurKejadian: string }).AlurKejadian
@@ -160,9 +160,9 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
         <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
           <div className="flex gap-2 p-4 rounded-full px-5 w-full">
-            <p className="md:w-1/3 w-1/4">Bukti Keluhan</p>
+            <p className="md:w-1/3 w-2/5">Bukti Keluhan</p>
             <p>:</p>
-            <p className="w-3/4 md:w-2/3 ml-3"></p>
+            <p className="w-3/5 md:w-2/3 ml-3"></p>
           </div>
           {laporan?.buktiKeluhan && (
             <Image

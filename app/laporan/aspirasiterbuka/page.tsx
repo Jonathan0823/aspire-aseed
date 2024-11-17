@@ -4,19 +4,19 @@ const page = () => {
     const menu = [
         {
             title: "Fasilitas Kampus",
-            link: "aspirasiterbuka/fasilitaskampus"
+            link: "/laporan/aspirasiterbuka/fasilitaskampus"
         },
         {
             title: "Kebersihan",
-            link: "aspirasiterbuka/kebersihan"
+            link: "/laporan/aspirasiterbuka/kebersihan"
         },
         {
             title: "Keamanan",
-            link: "aspirasiterbuka/keamanan"
+            link: "/laporan/aspirasiterbuka/keamanan"
         },
         {
             title: "Akademik",
-            link: "aspirasiterbuka/akademik"
+            link: "/laporan/aspirasiterbuka/akademik"
         }
     ]
 

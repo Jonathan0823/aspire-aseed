@@ -5,7 +5,6 @@ import { auth } from './auth'
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
     const session = await auth();
-    console.log(session)
     if (!session) {
         return NextResponse.redirect(new URL('/login', request.url))
     }

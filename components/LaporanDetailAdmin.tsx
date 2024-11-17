@@ -56,7 +56,6 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
     fetchLaporan();
   }, [type]);
 
-  console.log(laporan);
 
   return (
     <div className="flex flex-col z-50 justify-center items-center w-screen px-4 pt-20">

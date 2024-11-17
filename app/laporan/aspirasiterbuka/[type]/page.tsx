@@ -7,7 +7,6 @@ type Params = Promise<{ type: string }>;
 const Page = async ({ params }: { params: Params }) => {
   const session = await auth();
   const { type } = await params;
-  console.log(session);
   return (
     <div className="relative h-screen flex flex-col justify-center items-center">
       <FormTerbuka type={type} userId={session?.user?.id ?? ''} />

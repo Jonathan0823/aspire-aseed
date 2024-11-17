@@ -21,7 +21,9 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
       const res = await edgestore.publicFiles.upload({
         file,
         onProgressChange: (progress) => {
-          console.log(progress);
+          if (progress === 100) {
+            toast.success("File berhasil diupload");
+          }
         },
       });
 

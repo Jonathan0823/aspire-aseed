@@ -18,7 +18,9 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
     const res = await edgestore.publicFiles.upload({
       file,
       onProgressChange: (progress) => {
-        console.log(progress);
+        if (progress === 100) {
+          toast.success("File berhasil diupload");
+        }
       },
     });
     try {
@@ -70,7 +72,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={angkatan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
+                placeholder="Masukkan Angkatan"
                 onChange={(e) => setAngkatan(e.target.value)}
               />
             </div>
@@ -83,7 +86,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={keluhan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"                placeholder="Masukkan Angkatan"
+                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
+                placeholder="Masukkan Angkatan"
                 onChange={(e) => setKeluhan(e.target.value)}
               />
             </div>

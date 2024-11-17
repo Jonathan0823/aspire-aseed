@@ -20,7 +20,9 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
     const res = await edgestore.publicFiles.upload({
       file,
       onProgressChange: (progress) => {
-        console.log(progress);
+        if (progress === 100) {
+          toast.success("File berhasil diupload");
+        }
       },
     });
     try {

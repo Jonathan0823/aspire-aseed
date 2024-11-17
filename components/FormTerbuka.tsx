@@ -17,6 +17,7 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
     if (!file || !nama || !kelas || !angkatan || !keluhan) {
       return toast.error("Data yang anda masukkan kurang lengkap");
     }
+    toast.loading("Mengirim laporan...");
     const res = await edgestore.publicFiles.upload({
       file,
       onProgressChange: (progress) => {
@@ -40,8 +41,10 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
       setAngkatan("");
       setKeluhan("");
       setFile(undefined);
+      toast.dismiss();
       toast.success("Laporan berhasil dikirim");
     } catch {
+      toast.dismiss();
       toast.error("Gagal mengirim laporan");
     }
   };
@@ -54,9 +57,7 @@ const FormTerbuka = ({ type, userId }: { type: string; userId: string }) => {
         </h3>
         <Toaster
           toastOptions={{
-            className: "",
             style: {
-              border: "1px solid #713200",
               padding: "16px",
               color: "#161f77",
               fontWeight: "bold",

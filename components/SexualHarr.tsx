@@ -18,13 +18,9 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
     if (!description || !file || !pelaku)
       return toast.error("Data yang anda masukkan kurang lengkap");
     try {
+      toast.loading("Mengirim laporan...");
       const res = await edgestore.publicFiles.upload({
         file,
-        onProgressChange: (progress) => {
-          if (progress === 100) {
-            toast.success("File berhasil diupload");
-          }
-        },
       });
 
       await createLaporanSexHar(
@@ -40,8 +36,10 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
       setDescription("");
       setPelaku("");
       setKontak("");
+      toast.dismiss();
       toast.success("Laporan berhasil dikirim");
     } catch {
+      toast.dismiss();
       toast.error("Gagal mengirim laporan");
     }
   };

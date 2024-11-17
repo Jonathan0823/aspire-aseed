@@ -1,7 +1,7 @@
 import LaporanDetailAdmin from "@/components/LaporanDetailAdmin";
-type Params = {params: {id: string}};
+type Params = Promise<{ id: string }>;
 
-const page = async ({params}: Params) => {
+const page = async ({params}: {params: Params}) => {
   const { id } = await params;
 
   return (

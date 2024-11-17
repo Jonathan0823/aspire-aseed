@@ -1,21 +1,14 @@
-import { auth } from "@/auth";
 import LaporanDetailAdmin from "@/components/LaporanDetailAdmin";
-import { redirect } from "next/navigation";
-import React from "react";
+type Params = {params: {id: string}};
 
-type Params = Promise<{ id: string }>;
-
-const Page = async ({ params }: { params: Params }) => {
+const page = async ({params}: Params) => {
   const { id } = await params;
-  // Simulasi autentikasi
-  const user = await auth();
-  if (!user?.user?.id?.startsWith("admin")) {
-    redirect("/");
-  }
 
-  return <div>
-    <LaporanDetailAdmin id={id} />
-  </div>;
+  return (
+    <div className="flex flex-col items-center justify-center w-screen h-screen bg-cover bg-center relative">
+      <LaporanDetailAdmin id={id}/>
+    </div>
+  );
 };
 
-export default Page;
+export default page;

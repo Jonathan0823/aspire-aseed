@@ -51,7 +51,7 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
 
         <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
           <div className="text-[#161f77]">
-            <div className="bg-[#ececec] font-bold px-4 py-2 text-sm sm:text-lg md:text-xl rounded-lg inline-block">
+            <div className="bg-[#ececec] font-bold px-4 py-2 text-lg md:text-xl rounded-lg inline-block">
               {type === "fasilitaskampus"
                 ? "Fasilitas Kampus"
                 : type
@@ -68,7 +68,7 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={angkatan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
+                className="w-48 md:w-80 focus:outline-none text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
                 placeholder="Masukkan Angkatan"
                 onChange={(e) => setAngkatan(e.target.value)}
               />
@@ -82,8 +82,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
               <input
                 type="text"
                 value={keluhan}
-                className="w-80 focus:outline-none text-lg ml-4 p-2 px-4 rounded-full"
-                placeholder="Masukkan Angkatan"
+                className="w-48 md:w-80 focus:outline-none text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                placeholder="Masukkan Detail"
                 onChange={(e) => setKeluhan(e.target.value)}
               />
             </div>
@@ -93,6 +93,7 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
             <div className="flex gap-2 p-4 rounded-full px-5 w-full">
               <p className="w-24">Bukti Keluhan</p>
               <p>:</p>
+            </div>
               <SingleImageDropzone
                 width={200}
                 height={200}
@@ -100,9 +101,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
                 onChange={(file) => {
                   setFile(file);
                 }}
-                className="bg-white ml-20"
+                className="bg-white mx-auto"
               />
-            </div>
           </div>
 
           <div className="flex justify-center mt-6">

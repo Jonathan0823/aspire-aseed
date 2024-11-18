@@ -58,7 +58,7 @@ const LaporanDetailAdmin = ({ id }: { id: string }) => {
 
   return (
     <div className="flex flex-col z-50 justify-center items-center w-screen px-4 pt-20">
-      <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
+      <h3 className="w-80 py-3 text-lg md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
         {type === "terbuka"
           ? "Aspirasi Terbuka"
           : type === "tertutup"

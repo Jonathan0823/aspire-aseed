@@ -1,15 +1,29 @@
 "use client";
 import Logo from "@/components/Logo";
 import { loginUser, registerUser } from "@/lib/action";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { getSession } from "next-auth/react";
 
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const session = await getSession();
+      if (session) {
+        router.push("/");
+      }
+    };
+    checkSession();
+  }, []);
+
 
   const handleLogin = async () => {
     if (!email || !password) {

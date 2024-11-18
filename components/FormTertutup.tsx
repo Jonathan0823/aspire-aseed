@@ -34,7 +34,7 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
   
   return (
     <div>
-      <div className="flex flex-col justify-center items-center w-screen px-4 pt-20">
+      <div className="flex flex-col justify-center items-center w-screen px-2 md:px-4 pt-20">
         <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md border-2">
           Aspirasi Tertutup
         </h3>
@@ -62,13 +62,13 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
           </div>
 
           <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
-            <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full ">
+            <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full ">
               <p className="w-24">Angkatan</p>
               <p>:</p>
               <input
                 type="text"
                 value={angkatan}
-                className="w-48 md:w-80 focus:outline-none text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                className="w-36 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-2 px-4 rounded-full"
                 placeholder="Masukkan Angkatan"
                 onChange={(e) => setAngkatan(e.target.value)}
               />
@@ -76,13 +76,13 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
           </div>
 
           <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
-            <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
-              <p className="w-24">Detail Keluhan</p>
+          <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full ">
+          <p className="w-24">Detail Keluhan</p>
               <p>:</p>
               <input
                 type="text"
                 value={keluhan}
-                className="w-48 md:w-80 focus:outline-none text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                className="w-36 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-2 px-4 rounded-full"
                 placeholder="Masukkan Detail"
                 onChange={(e) => setKeluhan(e.target.value)}
               />
@@ -90,8 +90,8 @@ const FormTertutup = ({ type, userId }: { type: string; userId: string }) => {
           </div>
 
           <div className="text-[#161f77] text-xl space-y-2 font-bold md:mt-5 mt-5 w-full">
-            <div className="flex gap-2 p-4 rounded-full px-5 w-full">
-              <p className="w-24">Bukti Keluhan</p>
+          <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 w-full ">
+          <p className="w-24">Bukti Keluhan</p>
               <p>:</p>
             </div>
               <SingleImageDropzone

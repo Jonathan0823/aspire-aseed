@@ -45,7 +45,7 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
   };
   return (
     <div>
-      <div className="flex flex-col justify-center items-center w-screen px-4 pt-20">
+      <div className="flex flex-col justify-center items-center w-screen px-2 md:px-4 pt-20">
         <h3 className="w-80 py-3 text-lg sm:text-xl md:text-2xl text-center mb-5 lg:text-3xl text-white font-bold rounded-full bg-[#273968] shadow-md hover:bg-[#1D2A56] border-2">
           Sexual Harassment
         </h3>
@@ -65,7 +65,7 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
         <div className="bg-[#d2c6b7] bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-2xl w-full text-left py-12 space-y-6">
           {name && (
             <div className="text-[#161f77] text-base  md:text-xl space-y-2 font-bold mt-5 w-full ">
-              <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
+              <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full">
                 <p className="w-52">Nama</p>
                 <p>:</p>
                 <input
@@ -75,7 +75,7 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
                   onChange={(e) => {
                     setNama(e.target.value);
                   }}
-                  className="w-48 md:w-80 focus:outline-none text-base md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                  className="w-40 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-2 px-4 rounded-full"
                   placeholder="Masukkan Nama"
                 />
               </div>
@@ -83,12 +83,12 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
           )}
 
           <div className="text-[#161f77] text-base  md:text-xl space-y-2 font-bold mt-5 w-full ">
-            <div className="flex gap-2 p-4 rounded-full px-5 w-full">
+            <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full">
               <p className="w-52">Deskripsikan alur kejadian</p>
               <p>:</p>
               <input
                 name="description"
-                className="w-48 md:w-80 focus:outline-none text-base md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                className="w-48 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
                 placeholder="Masukkan Deskripsi"
                 value={description}
                 onChange={(e) => {
@@ -99,12 +99,12 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
           </div>
 
           <div className="text-[#161f77] text-base  md:text-xl space-y-2 font-bold mt-5 w-full ">
-            <div className="flex gap-2 p-4 rounded-full px-5 justify-between w-full">
+            <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full">
               <p className="w-52">Deskripsikan ciri pelaku</p>
               <p>:</p>
               <input
                 name="pelaku"
-                className="w-48 md:w-80 focus:outline-none text-base md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                className="w-48 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
                 placeholder="Masukkan Ciri Pelaku"
                 value={pelaku}
                 onChange={(e) => {
@@ -115,7 +115,7 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
           </div>
 
           <div className="text-[#161f77] text-base  md:text-xl space-y-2 font-bold mt-5 w-full ">
-            <div className="flex gap-2 p-4 rounded-full px-5 w-full">
+            <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full">
               <p className="w-52">Bukti yang mendukung laporan tersebut</p>
               <p>:</p>
               <SingleImageDropzone
@@ -130,13 +130,13 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
             </div>
           </div>
 
-          <div className=" bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-8 md:max-w-xl w-full text-left py-12 space-y-6">
+          <div className=" bg-opacity-90 overflow-y-auto rounded-lg max-h-[500px] hide-scrollbar p-2 md:p-8 md:max-w-xl w-full text-left py-12 space-y-6">
             <div className="text-base md:text-xl font-bold text-[#161f77] mb-5">
               Apakah Anda bersedia menindaklanjuti kejadian ini? Jika iya,
               silakan sebutkan kontak yang dapat dihubungi:
             </div>
             <div className="text-[#161f77] text-base  md:text-xl space-y-2 font-bold mt-5 w-full ">
-              <div className="flex gap-2 p-4 rounded-full px-5 w-full">
+              <div className="flex gap-2 p-4 rounded-full px-2 md:px-5 justify-between w-full">
                 <p className="w-52">Kontak (opsional)</p>
                 <p>:</p>
                 <input
@@ -146,7 +146,7 @@ const SexualHarr = ({ name, userId }: { name: string; userId: string }) => {
                     setKontak(e.target.value);
                   }}
                   name="contact"
-                  className="w-48 md:w-80 focus:outline-none text-base md:text-lg ml-4 p-1 md:p-2 px-4 rounded-full"
+                  className="w-40 md:w-80 focus:outline-none text-sm md:text-lg ml-4 p-2 px-4 rounded-full"
                   placeholder="Masukkan Kontak"
                 />
               </div>

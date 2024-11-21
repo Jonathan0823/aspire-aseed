@@ -7,16 +7,10 @@ const ContactSection = () => {
         </h2>
         <div className="bg-[#d2c6b7] bg-opacity-90 rounded-lg p-8 md:max-w-xl w-full text-left py-12 space-y-4">
           <p className="text-[#040180] font-semibold text-xl leading-relaxed">
-            Email:
+            Email: aseedfkipunsika@gmail.com
           </p>
           <p className="text-[#040180] font-semibold text-xl leading-relaxed">
-            Instagram:
-          </p>
-          <p className="text-[#040180] font-semibold text-xl leading-relaxed">
-            Tiktok:
-          </p>
-          <p className="text-[#040180] font-semibold text-xl leading-relaxed">
-            Contact Person:
+            Instagram: aseedunsika
           </p>
         </div>
       </div>
